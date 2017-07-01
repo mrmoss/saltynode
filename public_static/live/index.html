@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='icon' type='image/png' href='../favicon-32x32.png' sizes='32x32'/>
+		<link rel='icon' type='image/png' href='../favicon-16x16.png' sizes='16x16'/>
+		<link rel='stylesheet' href='../css/bootstrap.min.css'>
+		<style>
+			.navbar-inverse .navbar-brand:hover,
+			.navbar-inverse .navbar-brand:focus
+			{
+				background-color:transparent;
+				color:#999999;
+				cursor:default;
+			}
+
+			.nav-icon
+			{
+				width:48px;
+				margin-top:-8px;
+				margin-right:-8px;
+			}
+
+			.nav-title
+			{
+				float:right;
+			}
+		</style>
+		<script src='../js/jquery-3.1.1.min.js'></script>
+		<script src='../js/bootstrap.min.js'></script>
+		<script src='../js/salty_finder.js'></script>
+		<script src='../js/live.js'></script>
+		<script src='../js/search.js'></script>
+		<script src='../js/utility.js'></script>
+		<title>Salty Finder - Live</title>
+	</head>
+	<body role='document'>
+		<nav class='navbar navbar-inverse navbar-fixed-top nohighlight'>
+			<div class='container'>
+				<div class='navbar-header'>
+					<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>
+						<span class='sr-only'>Toggle navigation</span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
+					</button>
+					<span class='navbar-brand'>
+						<span>
+							<img class='nav-icon' src='../img/salt.png'>
+							<span class='nav-title'>Salty Finder</span>
+						</span>
+					</span>
+				</div>
+				<div id='navbar' class='navbar-collapse collapse'>
+					<ul class='nav navbar-nav'>
+						<li><a href='../live/'>Live</a></li>
+						<li><a href='../search/'>Search</a></li>
+						<li><a href='https://chrome.google.com/webstore/detail/salty-finder/copocnlfmefhjhcpnciembhppkkaoagi'>Extension</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class='container theme-showcase' role='main' style='padding-top: 32px;'>
+			<div class='page-header'>
+				<h1>Live</h1>
+			</div>
+			<div class='row'>
+				<div id='red_div' class='col-lg-6'>Loading results...</div>
+				<div id='blue_div' class='col-lg-6'></div>
+			</div>
+		</div>
+		<script>
+			var last_match={red:null,blue:null};
+			var red_div=document.getElementById('red_div');
+			var blue_div=document.getElementById('blue_div');
+
+			setInterval(function()
+			{
+				get_match(red_div,blue_div);
+			},5000);
+			get_match(red_div,blue_div);
+		</script>
+	</body>
+</html>
