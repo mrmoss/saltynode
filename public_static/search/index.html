@@ -95,7 +95,7 @@
 			search_button.addEventListener('click',function()
 			{
 				var a=fighter_link(query_box.value.trim());
-				a.click();
+				window.location=a.href;
 			});
 			var results_div=document.getElementById('results_div');
 

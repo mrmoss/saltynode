@@ -1,22 +1,19 @@
 {
-	"name":"saltynode",
-	"version":"0.0.1",
-	"ignore":
-	[
+	"name": "saltynode",
+	"version": "0.0.1",
+	"ignore": [
 		".gitignore"
 	],
-	"main":"app.js",
-	"license":"MIT",
-	"files":
-	[
+	"main": "app.js",
+	"license": "MIT",
+	"files": [
 		"app.js"
 	],
-	"devDependencies":
-	{
-		"@types/node":"^6.0.41",
-		"body-parser":"1.15.2",
-		"express":"4.13.4",
-		"express-ws":"2.0.0-rc.1",
-		"sqlite3":"3.1.8"
+	"devDependencies": {
+		"@types/node": "^6.0.41",
+		"body-parser": "^1.18.3",
+		"express": "^4.16.4",
+		"express-ws": "2.0.0-rc.1",
+		"sqlite3": "^4.0.6"
 	}
 }
