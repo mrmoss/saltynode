@@ -6,6 +6,31 @@ var settings=require('./settings');
 var sqlite3=require('sqlite3');
 var public_static='public_static';
 
+function bad_cli(cli_str)
+{
+	console.log('Unknown command line option "'+cli_str+'"');
+	process.exit(-1);
+}
+
+for(var ii=2;ii<process.argv.length;++ii)
+{
+	var parts=process.argv[ii].split('=');
+	if(parts.length!=2)
+		bad_cli(process.argv[ii]);
+	if(!parts[0].startsWith('--'))
+		bad_cli(process.argv[ii]);
+	parts[0]=parts[0].substring(2,parts[0].length);
+	if(!(parts[0] in settings))
+		bad_cli(process.argv[ii]);
+
+	type=typeof(settings[parts[0]]);
+	if(type=="number")
+		parts[1]=parseInt(parts[1]);
+
+	console.warn('Setting "'+parts[0]+'" to "'+parts[1]+'" with type "'+type+'"');
+	settings[parts[0]]=parts[1];
+}
+
 var db=new sqlite3.Database('./saltybet.db');
 app.listen(settings.listen_port,settings.listen_addr);
 app.use(bodyParser.json({limit:settings.max_upload_size}));
