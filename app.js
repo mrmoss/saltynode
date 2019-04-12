@@ -11,6 +11,10 @@ function bad_cli(cli_str)
 	console.log('Unknown command line option "'+cli_str+'"');
 	process.exit(-1);
 }
+function ignore_cli(cli_str)
+{
+	console.log('Ignoring command line option "'+cli_str+'"');
+}
 
 for(var ii=2;ii<process.argv.length;++ii)
 {
@@ -18,7 +22,10 @@ for(var ii=2;ii<process.argv.length;++ii)
 	if(parts.length!=2)
 		bad_cli(process.argv[ii]);
 	if(!parts[0].startsWith('--'))
-		bad_cli(process.argv[ii]);
+	{
+		ignore_cli(process.argv[ii]);
+		continue;
+	}
 	parts[0]=parts[0].substring(2,parts[0].length);
 	if(!(parts[0] in settings))
 		bad_cli(process.argv[ii]);
